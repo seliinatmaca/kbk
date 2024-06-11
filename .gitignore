@@ -20,7 +20,11 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+<<<<<<< HEAD
 **/.xcode.env.local
+=======
+ios/.xcode.env.local
+>>>>>>> 4651d54 (Initial commit)
 
 # Android/IntelliJ
 #
@@ -56,7 +60,11 @@ yarn-error.log
 *.jsbundle
 
 # Ruby / CocoaPods
+<<<<<<< HEAD
 **/Pods/
+=======
+/ios/Pods/
+>>>>>>> 4651d54 (Initial commit)
 /vendor/bundle/
 
 # Temporary files created by Metro to check the health of the file watcher
@@ -64,6 +72,7 @@ yarn-error.log
 
 # testing
 /coverage
+<<<<<<< HEAD
 
 # Yarn
 .yarn/*
@@ -72,3 +81,5 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+=======
+>>>>>>> 4651d54 (Initial commit)

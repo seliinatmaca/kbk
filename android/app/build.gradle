@@ -1,5 +1,8 @@
 apply plugin: "com.android.application"
+<<<<<<< HEAD
 apply plugin: "org.jetbrains.kotlin.android"
+=======
+>>>>>>> 4651d54 (Initial commit)
 apply plugin: "com.facebook.react"
 
 /**
@@ -71,12 +74,21 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 
 android {
     ndkVersion rootProject.ext.ndkVersion
+<<<<<<< HEAD
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
     namespace "com.redux_toolkit_example"
     defaultConfig {
         applicationId "com.redux_toolkit_example"
+=======
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    namespace "com.netflixclone"
+    defaultConfig {
+        applicationId "com.netflixclone"
+>>>>>>> 4651d54 (Initial commit)
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -108,6 +120,15 @@ dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
 
+<<<<<<< HEAD
+=======
+    debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")
+    debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
+        exclude group:'com.squareup.okhttp3', module:'okhttp'
+    }
+
+    debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}")
+>>>>>>> 4651d54 (Initial commit)
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {
