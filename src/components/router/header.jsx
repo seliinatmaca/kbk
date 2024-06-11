@@ -1,33 +1,44 @@
 //import liraries
 import React, {Component} from 'react';
-import {View, Image, StyleSheet} from 'react-native';
+import {View, Image, StyleSheet, Pressable, Text} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {aplicationColors} from '../../theme/colors';
 import {height, width} from '../../utils/constants';
-import {SearchFavorite, SearchNormal} from 'iconsax-react-native';
-
+import Icon from 'react-native-vector-icons/Feather';
+import {useNavigation} from '@react-navigation/native';
+import {NOTTIFICATION} from '../../utils/routes';
+import { useSelector } from 'react-redux';
 // create a component
-const Header = () => {
+const Header = props => {
   const insets = useSafeAreaInsets();
+  const name = props?.route?.name;
+  const navigation = useNavigation();
+  const {count}=useSelector(state=>state.nottification)
   return (
     <View
       style={{
         justifyContent: 'center',
         alignItems: 'center',
-        // Paddings to handle safe area
         paddingTop: insets.top,
         paddingBottom: insets.bottom,
-        paddingLeft: insets.left,
-        paddingRight: insets.right + 5,
+        paddingHorizontal: insets.left + 10,
         backgroundColor: aplicationColors.PRIMARY,
         flexDirection: 'row',
       }}>
+      <View style={{flex: 1}}>
+        {name ? (
+          <Pressable onPress={() => navigation.goBack()}>
+            <Icon size={30} color={aplicationColors.WHITE} name="arrow-left" />
+          </Pressable>
+        ) : (
+          <Icon size={30} color={aplicationColors.WHITE} name="menu" />
+        )}
+      </View>
       <View
         style={{
-          flex: 1,
+          flex: 3,
           justifyContent: 'center',
           alignItems: 'center',
-          paddingLeft: 40,
         }}>
         <Image
           style={{
@@ -38,20 +49,33 @@ const Header = () => {
           source={require('../../assets/images/logo.png')}
         />
       </View>
-      <SearchNormal size={30} color={aplicationColors.WHITE} />
+      <View style={{flex: 1, justifyContent: 'flex-end', flexDirection: 'row'}}>
+        <Pressable style={{marginRight: 10}}>
+          <Icon size={30} color={aplicationColors.WHITE} name="search" />
+        </Pressable>
+        {!name && (
+          <Pressable onPress={() => navigation.navigate(NOTTIFICATION)}>
+            <Icon size={30} color={aplicationColors.WHITE} name="bell" />
+            <View
+              style={{
+                backgroundColor: 'red',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: 1,
+                borderRadius: 100,
+                width: 20,
+                height: 20,
+                position: 'absolute',
+                top: -5,
+                right: -5,
+              }}>
+              <Text style={{color: aplicationColors.WHITE}}>{count}</Text>
+            </View>
+          </Pressable>
+        )}
+      </View>
     </View>
   );
 };
 
-// define your styles
-const styles = StyleSheet.create({
-  container: {
-    height: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#2c3e50',
-  },
-});
-
-//make this component available to the app
 export default Header;

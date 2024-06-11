@@ -19,6 +19,7 @@ prepare_react_native_project!
 #   dependencies: {
 #     ...(process.env.NO_FLIPPER ? { 'react-native-flipper': { platforms: { ios: null } } } : {}),
 # ```
+<<<<<<< HEAD
 flipper_config = ENV['NO_FLIPPER'] == "1" ? FlipperConfiguration.disabled : FlipperConfiguration.enabled
 
 >>>>>>> 4651d54 (Initial commit)
@@ -35,6 +36,16 @@ target 'redux_toolkit_example' do
   use_react_native!(
     :path => config[:reactNativePath],
 =======
+=======
+flipper_config = ENV['NO_FLIPPER'] == "1" ? FlipperConfiguration.disabled : FlipperConfiguration.disabled
+
+# linkage = ENV['USE_FRAMEWORKS']
+# if linkage != nil
+#   Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
+  
+# end
+use_frameworks! :linkage => :static
+>>>>>>> 46c4ce2 (last commit)
 target 'netflixClone' do
   config = use_native_modules!
 
@@ -62,9 +73,20 @@ target 'netflixClone' do
   target 'netflixCloneTests' do
 >>>>>>> 4651d54 (Initial commit)
     inherit! :complete
+    use_modular_headers!
     # Pods for testing
   end
-
+  pod 'Firebase', :modular_headers => true
+  pod 'FirebaseFirestore', :modular_headers => true
+  pod 'FirebaseCore', :modular_headers => true
+  pod 'GoogleUtilities', :modular_headers => true
+  pod 'FirebaseCoreExtension', :modular_headers => true
+  pod 'FirebaseInstallations', :modular_headers => true
+  pod 'GoogleDataTransport', :modular_headers => true
+  pod 'FirebaseDatabase', :modular_headers => true
+  pod 'nanopb', :modular_headers => true
+  pod 'leveldb-library', :modular_headers => true
+  pod 'FirebaseAppCheckInterop', :modular_headers => true
   post_install do |installer|
     # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
     react_native_post_install(

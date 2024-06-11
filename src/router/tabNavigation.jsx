@@ -4,7 +4,6 @@ import Favorite from '../screens/favorite';
 import {FAVORITE, HOME} from '../utils/routes';
 import Home from '../screens/home';
 import {aplicationColors} from '../theme/colors';
-import {Text, View} from 'react-native';
 import TabIcon from '../components/router/tabIcon';
 import Header from '../components/router/header';
 
@@ -19,7 +18,7 @@ export default function TabNavigation() {
             focused={focused}
             color={color}
             size={size}
-            name={route?.name}
+            iconName={route?.name}
             route={route}
           />
         ),
