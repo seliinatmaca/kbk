@@ -13,8 +13,9 @@ export default function App() {
   const linking = {
     prefixes: [
       'netflixclone://',
+      'http://www.netflixClone.com', 
       'https://www.netflixClone.com',
-      'http://www.netflixClone.com',
+    
     ],
     config: {
       screens: {
