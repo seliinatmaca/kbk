@@ -18,7 +18,7 @@ const MovieCard = ({item}) => {
         source={{
           uri: `${IMAGE_BASE_URL}${item.poster_path}`,
           headers: {
-            ccept: 'application/json',
+            accept: 'application/json',
             Authorization: `Bearer ${token}`,
           },
           priority: FastImage.priority.high,
